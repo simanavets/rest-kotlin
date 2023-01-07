@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 import javax.validation.constraints.Positive
 
 @RestController
@@ -32,7 +33,7 @@ class EmployeeController(@Autowired val employeeService: EmployeeService) {
     }
 
     @PostMapping
-    fun addEmployee(@RequestBody employee: Employee) {
+    fun addEmployee(@RequestBody @Valid employee: Employee) {
         logger.info("Method addEmployee takes employee $employee")
         employeeService.addEmployee(employee)
     }
